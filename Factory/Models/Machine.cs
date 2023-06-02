@@ -2,18 +2,18 @@ using System.Collections.Generic;
 
 namespace Factory.Models
 {
-    public class Machine
+    public class machine
     {
         public string Description { get; set; }
-        private static List<Machine> _instances = new List<Machine> { };
+        private static List<machine> _instances = new List<machine> { };
 
-        public Machine(string description)
+        public machine(string description)
         {
             Description = description;
             _instances.Add(this);
         }
 
-        public static List<Machine> GetAll()
+        public static List<machine> GetAll()
         {
             return _instances;
         }

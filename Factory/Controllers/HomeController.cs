@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
+using System.Collections.Generic;
 
 namespace Factory.Controllers
 {
@@ -9,21 +10,22 @@ namespace Factory.Controllers
         [HttpGet("/")]
         public ActionResult Index()
         {
-            Machine starterMachine = new Machine("Add first Machine to To Do List");
-            return View(starterMachine);
+
+            List<machine> allmachines = machine.GetAll();
+            return View(allmachines);
         }
 
-        [HttpGet("/Machines/new")]
+        [HttpGet("/machines/new")]
         public ActionResult CreateForm()
         {
             return View();
         }
 
-        [HttpPost("/Machines")]
+        [HttpPost("/machines")]
         public ActionResult Create(string description)
         {
-            Machine myMachine = new Machine(description);
-            return View("Index", myMachine);
+            machine mymachine = new machine(description);
+            return RedirectToAction("Index");
         }
 
     }
