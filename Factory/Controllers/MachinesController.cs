@@ -7,38 +7,22 @@ namespace Factory.Controllers
     public class MachinesController : Controller
     {
 
-        [HttpGet("/machines")]
-        public ActionResult Index()
+        [HttpGet("/categories/{categoryId}/machines/new")]
+        public ActionResult New(int categoryId)
         {
-            List<Machine> allMachines = Machine.GetAll();
-            return View(allMachines);
+            Category category = Category.Find(categoryId);
+            return View(category);
         }
 
-        [HttpGet("/machines/new")]
-        public ActionResult New()
+        [HttpGet("/categories/{categoryId}/machines/{machineId}")]
+        public ActionResult Show(int categoryId, int machineId)
         {
-            return View();
-        }
-
-        [HttpPost("/machines")]
-        public ActionResult Create(string description)
-        {
-            Machine myMachine = new Machine(description);
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost("/machines/delete")]
-        public ActionResult DeleteAll()
-        {
-            Machine.ClearAll();
-            return View();
-        }
-
-        [HttpGet("/machines/{id}")]
-        public ActionResult Show(int id)
-        {
-            Machine foundMachine = Machine.Find(id);
-            return View(foundMachine);
+            Machine machine = Machine.Find(machineId);
+            Category category = Category.Find(categoryId);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            model.Add("machine", machine);
+            model.Add("category", category);
+            return View(model);
         }
     }
 }

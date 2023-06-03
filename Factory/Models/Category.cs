@@ -31,5 +31,11 @@ namespace Factory.Models
         {
             return _instances[searchId - 1];
         }
+
+        public void AddMachine(Machine machine)
+        {
+            Machines.Add(machine);
+        }
+
     }
 }

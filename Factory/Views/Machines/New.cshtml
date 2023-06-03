@@ -9,10 +9,13 @@
 </head>
 
 <body>
-    <form action="/machines" method="post">
-        <label for="description">Add a new machine</label>
-        <input id="description" name="description" type="text">
-        <button type="submit">Submit</button>
+    <h1>Add a new machine to @Model.Name</h1>
+
+    <form action="/categories/@Model.Id/machines" method="post">
+        <input id="categoryId" name="categoryId" type="hidden" value="@Model.Id">
+        <label for="machineDescription">Machine Description</label>
+        <input id="machineDescription" name="machineDescription" type="text">
+        <button type='submit'>Add Machine</button>
     </form>
 </body>
 
