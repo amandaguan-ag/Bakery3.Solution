@@ -27,5 +27,12 @@ namespace Factory.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost("/machines/delete")]
+        public ActionResult DeleteAll()
+        {
+            Machine.ClearAll();
+            return View();
+        }
+
     }
 }
