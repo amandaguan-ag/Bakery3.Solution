@@ -15,7 +15,7 @@ namespace Factory.Controllers
         }
 
         [HttpGet("/machines/new")]
-        public ActionResult CreateForm()
+        public ActionResult New()
         {
             return View();
         }
@@ -34,5 +34,11 @@ namespace Factory.Controllers
             return View();
         }
 
+        [HttpGet("/machines/{id}")]
+        public ActionResult Show(int id)
+        {
+            Machine foundMachine = Machine.Find(id);
+            return View(foundMachine);
+        }
     }
 }
