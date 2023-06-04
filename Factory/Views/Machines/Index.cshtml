@@ -10,12 +10,16 @@
 {
     <h3>No machines have been added yet!</h3>
 }
-
-<ul>
+else
+{
+    <ul>
     @foreach (Machine machine in Model)
-    {
-        <li>@Html.ActionLink($"{machine.Description}", "Details", new { id = machine.MachineId })</li>
-    }
-</ul>
+        {
+            <li>@Html.ActionLink($"{machine.Description}", "Details", new { id = machine.MachineId }) | @machine.Category.Name
+            </li>
+        }
+    </ul>
+}
 
 <p>@Html.ActionLink("Add new machine", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
