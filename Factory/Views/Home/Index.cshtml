@@ -4,19 +4,19 @@
 
 @using Factory.Models;
 
-<h1>Welcome to the Factory!</h1>
+<h1>Welcome to Dr. Sillystringz's Factory!</h1>
 
 <hr>
 
-<h4>Categories</h4>
-@if (Model["categories"].Length == 0)
+<h4>Engineers</h4>
+@if (Model["engineers"].Length == 0)
 {
-  <p>No categories have been added yet!</p>
+  <p>No engineers have been added yet!</p>
 } 
 <ul>
-  @foreach (Category cat in Model["categories"])
+  @foreach (Engineer eng in Model["engineers"])
   {
-    <li>@Html.ActionLink(@cat.Name, "Details", "Categories", new { id = @cat.CategoryId})</li>
+    <li>@Html.ActionLink(@eng.Title, "Details", "Engineers", new { id = @eng.EngineerId})</li>
   }
 </ul>
 
@@ -35,5 +35,4 @@
 <hr>
 
 <p>@Html.ActionLink("Manage machines", "Index", "Machines")</p> 
-<p>@Html.ActionLink("Manage categories", "Index", "Categories")</p>
 <p>@Html.ActionLink("Manage engineers", "Index", "Engineers")</p>
