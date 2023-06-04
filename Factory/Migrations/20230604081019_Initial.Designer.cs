@@ -2,6 +2,7 @@
 using Factory.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    partial class FactoryContextModelSnapshot : ModelSnapshot
+    [Migration("20230604081019_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,7 +108,7 @@ namespace Factory.Migrations
                         .IsRequired();
 
                     b.HasOne("Factory.Models.Machine", "Machine")
-                        .WithMany("JoinEntities")
+                        .WithMany()
                         .HasForeignKey("MachineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -122,11 +124,6 @@ namespace Factory.Migrations
                 });
 
             modelBuilder.Entity("Factory.Models.Engineer", b =>
-                {
-                    b.Navigation("JoinEntities");
-                });
-
-            modelBuilder.Entity("Factory.Models.Machine", b =>
                 {
                     b.Navigation("JoinEntities");
                 });
