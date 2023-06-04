@@ -1,5 +1,5 @@
 @{
-    Layout = "_Layout";
+  Layout = "_Layout";
 }
 
 @model Factory.Models.Category;
@@ -10,33 +10,33 @@
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 
-@if (@Model.Machines.Count == 0)
+@if(@Model.Machines.Count == 0)
 {
-                    <p>This category does not contain any machines</p>
+  <p>This category does not contain any machines</p>
 }
 else
 {
-                    <h4>Machines the category contains:</h4>
-                    <ul>
-        @foreach (Machine machine in Model.Machines)
-        {
-            string engineers = "";
-            @if (machine.JoinEntities.Count == 0)
-            {
-                engineers = "This machine does not have any engineers.";
-            }
-            else
-            {
-                List<string> engineerList = new List<string>();
-                @foreach (MachineEngineer join in machine.JoinEntities)
-                {
-                    engineerList.Add(join.Engineer.Title);
-                }
-                engineers = String.Join(", ", engineerList);
-            }
-                                            <li>@machine.Description | Engineers: @engineers</li>
-        }
-                    </ul>
+  <h4>Machines the category contains:</h4>
+  <ul>
+  @foreach(Machine machine in Model.Machines)
+  {
+    string engineers = "";
+    @if(machine.JoinEntities.Count == 0)
+    {
+      engineers = "This machine does not have any engineers.";
+    }
+    else
+    {
+      List<string> engineerList = new List<string>();
+      @foreach(MachineEngineer join in machine.JoinEntities)
+      {
+        engineerList.Add(join.Engineer.Title);
+      }
+      engineers = String.Join(", ", engineerList);
+    }
+    <li>@machine.Description | Engineers: @engineers</li>
+  }
+  </ul>
 }
 
 <p>@Html.ActionLink("Back to categories", "Index")</p>
