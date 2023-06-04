@@ -33,13 +33,17 @@ namespace Factory.Controllers
         [HttpPost]
         public ActionResult Create(Machine machine)
         {
-            if (machine.CategoryId == 0)
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("Create");
+                ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
+                return View(machine);
             }
-            _db.Machines.Add(machine);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            else
+            {
+                _db.Machines.Add(machine);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Details(int id)
