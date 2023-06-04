@@ -15,7 +15,7 @@ else
     <ul>
     @foreach (Machine machine in Model)
         {
-            <li>@Html.ActionLink($"{machine.Description}", "Details", new { id = machine.MachineId }) | @machine.Category.Name</li>
+            <li>@Html.ActionLink($"{machine.Description}", "Details", new { id = machine.MachineId })</li>
         }
     </ul>
 }

@@ -18,15 +18,12 @@ namespace Factory.Controllers
 
         public ActionResult Index()
         {
-            List<Machine> model = _db.Machines
-                                  .Include(machine => machine.Category)
-                                  .ToList();
+            List<Machine> model = _db.Machines.ToList();
             return View(model);
         }
 
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
             return View();
         }
 
@@ -35,7 +32,6 @@ namespace Factory.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
                 return View(machine);
             }
             else
@@ -49,7 +45,6 @@ namespace Factory.Controllers
         public ActionResult Details(int id)
         {
             Machine thisMachine = _db.Machines
-                .Include(machine => machine.Category)
                 .Include(machine => machine.JoinEntities)
                 .ThenInclude(join => join.Engineer)
                 .FirstOrDefault(machine => machine.MachineId == id);
@@ -59,7 +54,6 @@ namespace Factory.Controllers
         public ActionResult Edit(int id)
         {
             Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-            ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
             return View(thisMachine);
         }
 
