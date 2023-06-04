@@ -2,8 +2,38 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models;
+
 <h1>Welcome to the Factory!</h1>
 
-<p>@Html.ActionLink("See all machines", "Index", "Machines")</p> 
-<p>@Html.ActionLink("See all categories", "Index", "Categories")</p>
-<p>@Html.ActionLink("See all engineers", "Index", "Engineers")</p>
+<hr>
+
+<h4>Categories</h4>
+@if (Model["categories"].Length == 0)
+{
+  <p>No categories have been added yet!</p>
+} 
+<ul>
+  @foreach (Category cat in Model["categories"])
+  {
+    <li>@Html.ActionLink(@cat.Name, "Details", "Categories", new { id = @cat.CategoryId})</li>
+  }
+</ul>
+
+<h4>Machines</h4>
+@if (Model["machines"].Length == 0)
+{
+  <p>No machines have been added yet!</p>
+} 
+<ul>
+  @foreach (Machine machine in Model["machines"])
+  {
+    <li>@Html.ActionLink(@machine.Description, "Details", "Machines", new { id = @machine.MachineId})</li>
+  }
+</ul>
+
+<hr>
+
+<p>@Html.ActionLink("Manage machines", "Index", "Machines")</p> 
+<p>@Html.ActionLink("Manage categories", "Index", "Categories")</p>
+<p>@Html.ActionLink("Manage engineers", "Index", "Engineers")</p>
