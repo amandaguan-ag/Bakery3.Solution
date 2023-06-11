@@ -21,27 +21,21 @@ _This project consists of an C# MVC web application that allows 'Mr.Sillystring'
 
 ## Setup/Installation Requirements
 
-* _Clone repository from Github and save a copy on own computer. Then on your local copy, navigate to the top level of the directory._
+1. Clone this repo.
+2. Open the terminal and navigate to this project's production directory called "HairSalon".
+3. Within the production directory "HairSalon", create a new file called `appsettings.json`.
+4. Within `appsettings.json`, put in the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL. 
 
-* _If saving repository remotely, make an initial commit pushing ONLY your .gitignore file so sensitive information is not pushed._
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR-DB-NAME];uid=[YOUR-USER-HERE];pwd=[YOUR-PASSWORD-HERE];"
+  }
+}
+```
 
-* _Ensure you have C# and .NET installed by running the command [dotnet --version] in your terminal. If the response is not a version number, install .NET from Microsoft website._
-
-* _Install MySQL Community Server MySQL Workbench per instruction provided below by Epicodus:_
-  * _[https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql]_
-
-* _Open MySQL Workbench and import the database provided with this project (rosario_ruvalcaba_factory)._
-  
-
-
-
-* _Create file called appsettings.json in the main project directory (HairSalon)_
-  * _Open file and add the following: { "ConnectionStrings": { "DefaultConnection": "Server=localhost;Port=3306;database=[DATABASE NAME HERE];uid=[USER ID HERE];pwd=[PASSWORD HERE];" } }_
-  * _Substitute your own information for DATABASE NAME HERE, USER ID HERE, and PASSWORD HERE._
-
-* _Navigate to the Factory directory in the project and run the command [dotnet restore, then dotnet build]._
-
-* _While still in the Factory directory, run the command [dotnet run] to run the application using a localhost server._
+5. Within the production directory "HairSalon", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
+4. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/lessons/redirecting-to-https-and-issuing-a-security-certificate).
 
 ## Known Bugs
 
