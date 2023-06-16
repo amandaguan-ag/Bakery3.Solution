@@ -20,8 +20,8 @@ namespace Bakery.Controllers
             Flavor[] Flavors = _db.Flavors.ToArray();
             Treat[] Treats = _db.Treats.ToArray();
             Dictionary<string, object[]> model = new Dictionary<string, object[]>();
-            model.Add("Flavors", Flavors);
-            model.Add("Treats", Treats);
+            model.Add("flavors", Flavors);
+            model.Add("treats", Treats);
             return View(model);
         }
     }

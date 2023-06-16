@@ -9,30 +9,31 @@
 <hr>
 
 <h4>Flavors</h4>
-@if (Model["Flavors"].Length == 0)
+@if (Model["flavors"].Length == 0)
 {
-    <p>No Flavors have been added yet!</p>
-}
+  <p>No flavors have been added yet!</p>
+} 
 <ul>
-  @foreach (Flavor eng in Model["Flavors"])
+  @foreach (Flavor flav in Model["flavors"])
   {
-      <li>@Html.ActionLink(@eng.Title, "Details", "Flavors", new { id = @eng.FlavorId})</li>
+    <li>@Html.ActionLink(@flav.Title, "Details", "Flavors", new { id = @flav.FlavorId})</li>
   }
 </ul>
 
 <h4>Treats</h4>
-@if (Model["Treats"].Length == 0)
+@if (Model["treats"].Length == 0)
 {
-    <p>No Treats have been added yet!</p>
-}
+  <p>No treats have been added yet!</p>
+} 
 <ul>
-  @foreach (Treat Treat in Model["Treats"])
+  @foreach (Treat treat in Model["treats"])
   {
-      <li>@Html.ActionLink(@Treat.Description, "Details", "Treats", new { id = @Treat.TreatId})</li>
+    <li>@Html.ActionLink(@treat.Description, "Details", "Treats", new { id = @treat.TreatId})</li>
   }
 </ul>
 
 <hr>
 
-<p>@Html.ActionLink("Manage Treats", "Index", "Treats")</p>
-<p>@Html.ActionLink("Manage Flavors", "Index", "Flavors")</p>
+<p>@Html.ActionLink("Manage treats", "Index", "Treats")</p> 
+<p>@Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
+<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
