@@ -20,17 +20,28 @@
   }
 </ul>
 
-<h4>Treats</h4>
-@if (Model["treats"].Length == 0)
+@if (User.Identity.IsAuthenticated)
 {
-  <p>No treats have been added yet!</p>
-} 
-<ul>
-  @foreach (Treat treat in Model["treats"])
+  <h4>Treats for @User.Identity.Name</h4>
+  @if (Model["treats"] == null || Model["treats"].Length == 0)
   {
-    <li>@Html.ActionLink(@treat.Description, "Details", "Treats", new { id = @treat.TreatId})</li>
+    <p>No treats have been added yet!</p>
   }
-</ul>
+  else 
+  {
+    <ul>
+      @foreach (Treat treat in Model["treats"])
+      {
+        <li>@Html.ActionLink(@treat.Description, "Details", "Treats", new { id = @treat.TreatId})</li>
+      }
+    </ul>
+  }
+}
+else
+{
+  <h4>Treats</h4>
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your treats.</p>
+}
 
 <hr>
 
