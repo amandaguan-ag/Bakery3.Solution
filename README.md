@@ -2,7 +2,7 @@
 
 #### By _**Amanda Guan**_
 
-#### _A website to track Pierre's sweet and savory treats_
+#### _A website to track  Pierre's sweet and savory treats_
 
 ## Technologies Used
 
@@ -37,7 +37,7 @@ _All visitors, even without logging in, can view the list of treats and flavors.
 }
 ```
 
-5. Within the production directory "HairSalon", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
+5. Within the production directory "Bakery", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
 6. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/lessons/redirecting-to-https-and-issuing-a-security-certificate).
 
 ## Known Bugs
