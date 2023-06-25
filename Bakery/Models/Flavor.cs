@@ -9,5 +9,6 @@ namespace Bakery.Models
         [Required(ErrorMessage = "The Flavor's title can't be empty!")]
         public string Title { get; set; }
         public List<TreatFlavor> JoinEntities { get; }
+        public ApplicationUser User { get; set; }
     }
 }
