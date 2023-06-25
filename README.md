@@ -42,7 +42,7 @@ _All visitors, even without logging in, can view the list of treats and flavors.
 
 ## Known Bugs
 
-- _At the moment: user can enter 'blank' or repeat Flavors/Treats as well as the wrong data type, such as letters for a numbers._
+- _unknown_
 
 ## License
 
