@@ -23,12 +23,21 @@ namespace Bakery.Controllers
             _db = db;
         }
 
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
-            return View(userTreats);
+            if (currentUser == null)
+            {
+                var treats = _db.Treats.ToList();
+                return View(treats);
+            }
+            else
+            {
+                var userTreats = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).ToList();
+                return View(userTreats);
+            }
         }
 
         public ActionResult Create()
@@ -54,6 +63,7 @@ namespace Bakery.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             Treat thisTreat = _db.Treats
